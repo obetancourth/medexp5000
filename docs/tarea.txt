@@ -4,7 +4,7 @@ GET /api/v1/expedientes/
 POST /api/v1/expedientes/new
     {
       identidad,
-      fecha (YYYYMMDD),
+      fecha (YYYYMMDD), new Date().toISOString()
       descripcion
       observación
       registros 0
