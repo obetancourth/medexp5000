@@ -29,6 +29,37 @@ class Pacientes {
       );
     });
   }
+
+  getAll () {
+    return new Promise ( (accept, reject) => {
+      db.all('SELECT * from pacientes;', (err, rows) => {
+        if(err){
+          console.error(err);
+          reject(err);
+        } else {
+          accept(rows);
+        }
+      });
+    });
+  }
+
+  getById(id) {
+    return new Promise((accept, reject) => {
+      db.get(
+        'SELECT * from pacientes where id=?;',
+        [id],
+        (err, row) => {
+        if (err) {
+          console.error(err);
+          reject(err);
+        } else {
+          accept(row);
+        }
+      });
+    });
+  }
+
+  
 }
 
 module.exports = Pacientes;

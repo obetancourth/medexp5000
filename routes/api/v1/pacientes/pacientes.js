@@ -13,21 +13,55 @@ router.get('/', (req, res) => {
   );
 }); //GET /
 
+router.get('/all', async (req, res) => {
+  try {
+    const rows = await pacienteModel.getAll();
+    res.status(200).json({status:'ok', pacientes: rows});
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({status:'failed'});
+  }
+} );
+// /byid/1;
+router.get('/byid/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const row = await pacienteModel.getById(parseInt(id));
+    res.status(200).json({ status: 'ok', paciente: row });
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ status: 'failed' });
+  }
+});
+
+router.get('/byagegender/:age/:gender', async (req, res) => {
+  try {
+    const { age, gender } = req.params;
+    const row = {}; // await pacienteModel.getById(parseInt(id));
+    res.status(200).json({ status: 'ok', paciente: row });
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ status: 'failed' });
+  }
+});
+
 router.post('/new', async (req, res) => {
   const { nombres, apellidos, identidad, email, telefono } = req.body;
-  rslt = await pacienteModel.new(nombres, apellidos, identidad, telefono, email);
-  res.status(200).json(
-    {
-      status: 'ok',
-      recieved: {
-        nombres,
-        apellidos,
-        nombreCompleto: `${nombres} ${apellidos}`,
-        identidad,
-        email,
-        telefono
-      }
-    });
+  try {
+    rslt = await pacienteModel.new(nombres, apellidos, identidad, telefono, email);
+    res.status(200).json(
+      {
+        status: 'ok',
+        result: rslt
+      });
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json(
+      {
+        status: 'failed',
+        result: {}
+      });
+  }
 }); //POST /new
 
 
