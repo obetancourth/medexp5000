@@ -65,10 +65,36 @@ router.post('/new', async (req, res) => {
 }); //POST /new
 
 
-//router.post();
 //router.put();
-//router.delete();
+router.put('/update/:id', async (req, res) => {
+  try{
+    const { nombres, apellidos, identidad, email, telefono } = req.body;
+    const { id } = req.params;
+    const result = await pacienteModel.updateOne(id, nombres, apellidos, identidad, telefono, email);
+    res.status(200).json({
+      status:'ok',
+      result
+    });
+  } catch(ex){
+    console.log(ex);
+    res.status(500).json({ status: 'failed' });
+  }
+});
 
+//router.delete();
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await pacienteModel.deleteOne(id);
+    res.status(200).json({
+      status: 'ok',
+      result
+    });
+  } catch (ex) {
+    console.log(ex);
+    res.status(500).json({ status: 'failed' });
+  }
+});
 
 
 module.exports = router;
