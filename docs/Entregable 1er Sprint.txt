@@ -1,0 +1,35 @@
+Sprint 1
+Epica (Definición del Proyecto a Realizar)
+
+User Stories
+  US0001 (1)--> El usuario ingresara su correo y contraseña para crear una nueva cuenta 
+  con el proposito de tener acceso al sistema.
+  El ____actor______  ________accion________ para _____objetivo o valor_________.
+
+  1) Correo debe ser valido
+  2) Registro debe estar en la dB
+  3) Usuario no puede crear dos cuentas con el mismo correo o identidad
+  4) El usuario debe ser o doctor o paciente, administrador (bajo nivel)
+  5) Mensajes de error si el usuario ya existe
+  6) Mensajes de error si la informacion no tiene el formato correcto
+  7) Correo de confirmación de correo enviado
+
+  US0002 (3)--> El paciente seleccionara el doctor y las categorias de registros para permitir el acceso a los mismos 
+  con el proposito de evitar fuga de informacion sensible sin consentimiento.
+
+  US0003 (2)--> El doctor podra acceder a los registros guardados por el o que fue concedido su acceso de un paciente 
+  con el objetivo de tener la información pertinente para una atencion personalizada.
+
+Backlog priorizado.
+  Story Points  (1, 2, 3, 5) 1 día de trabajo
+Sprint 2 ( 13/14)
+  US001 (1)
+  US008 (3)
+  US003 (2)
+  ...
+Sprint 3 (14 / 14)
+  US010 (2)
+  US011 (3)
+  US007 (2)
+
+System Demo
