@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "jest --setupFiles dotenv/config --silent=false --verbose"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -12,5 +13,9 @@
     "express": "~4.16.1",
     "morgan": "~1.9.1",
     "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "supertest": "^6.2.2"
   }
 }

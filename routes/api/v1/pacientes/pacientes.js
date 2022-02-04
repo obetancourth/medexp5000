@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const Pacientes = new require('../../../../dao/pacientes/pacientes.model');
+const Pacientes = require('../../../../dao/pacientes/pacientes.model');
 const pacienteModel = new Pacientes();
 
 router.get('/', (req, res) => {
   res.status(200).json(
     {
       endpoint: 'Pacientes',
-      updates: new Date(2022,0,19,18,41,00)
+      updates: new Date(2022,0,19,18,41,0)
     }
   );
 }); //GET /
