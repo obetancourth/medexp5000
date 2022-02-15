@@ -26,7 +26,7 @@ router.get('/all', async (req, res) => {
 router.get('/byid/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const row = await pacienteModel.getById(parseInt(id));
+    const row = await pacienteModel.getById(id);
     res.status(200).json({ status: 'ok', paciente: row });
   } catch (ex) {
     console.log(ex);

@@ -1,4 +1,6 @@
+const ObjectId = require('mongodb').ObjectId;
 const getDb = require('../mongodb');
+
 let db = null;
 class Pacientes {
   collection = null;
@@ -27,15 +29,32 @@ class Pacientes {
   }
 
   async getAll() {
-    
+    const cursor = this.collection.find({});
+    const documents = await cursor.toArray();
+    return documents;
   }
 
   async getById(id) {
-    
+    const _id = new ObjectId(id);
+    const filter = {_id};
+    console.log(filter);
+    const myDocument = await this.collection.findOne(filter);
+    return myDocument;
   }
 
   async updateOne(id, nombres, apellidos, identidad, telefono, correo) {
-    
+    const filter = {_id: new ObjectId(id)};
+    // UPDATE PACIENTES SET campo=valor, campo=valor where id= id;
+    const updateCmd = {
+      '$set':{
+        nombres,
+        apellidos,
+        identidad,
+        telefono,
+        correo
+      }
+    };
+    return await this.collection.updateOne(filter, updateCmd);
   }
 
   async deleteOne(id) {
