@@ -5,13 +5,12 @@ const { verifyApiHeaderToken } =
 
 const {passport, jwtMiddleware} = require('./seguridad/jwtHelper');
 
-// const middlewares = require('./headerVerifyMiddleware');
 const pacientesRoutes = require('./pacientes/pacientes');
 const seguridadRoutes = require('./seguridad/seguridad');
 // const expedientesRoutes = require('./expedientes/expedientes');
 router.use(passport.initialize());
 //public
-router.use('/seguridad', seguridadRoutes);
+router.use('/seguridad', verifyApiHeaderToken, seguridadRoutes);
 //middlewares
 router.use(
   '/pacientes',
